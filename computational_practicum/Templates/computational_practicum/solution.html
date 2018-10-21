@@ -4,14 +4,28 @@
     <meta charset="UTF-8">
     <title>Solution</title>
 </head>
-<body>
 
-{% block content %}
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Get solution</button>
-    </form>
-{% endblock %}
+    {% block content %}
+        <h1>
+            <center>Get approximate solution to equation with</center>
+        </h1>
+        <h1>
+            <center>Euler's Method, Improved Euler's Method and Runge-Kutta Method!</center>
+        </h1><br>
 
-</body>
+        <h2>
+            <center>Enter your data:</center>
+        </h2>
+        <center>
+            <form method="POST" class="post-form">{% csrf_token %}
+                {{ form.as_p }}
+                <button class="save btn btn-default">Submit</button>
+            </form>
+        </center>
+        <br>
+        <center><button class="save btn btn-default" onclick=location.href="{% url 'get_solution' %}">Get solution</button></center>
+
+    {% endblock %}
+
+    </body>
 </html>
