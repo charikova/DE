@@ -25,7 +25,7 @@ def parser(request):
     n = ([q[0].n])
     Post.objects.all().delete()
     euler_method.computations(x0[0], y0[0], x[0], n[0])
-    improved_euler_method.computations(x0[-1], y0[-1], x[-1], n[-1])
-    runge_kutta_method.computations(x0[-1], y0[-1], x[-1], n[-1])
+    improved_euler_method.computations(x0[0], y0[0], x[0], n[0])
+    runge_kutta_method.computations(x0[0], y0[0], x[0], n[0])
 
     return render(request, 'computational_practicum/get_solution.html', {'x0': x0, 'y0': y0, 'x': x, 'n': n})

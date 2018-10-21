@@ -17,10 +17,14 @@ def computations(x0, y0, x, n):
     for i in range(n):
         x = xs[-1]
         y = ys[-1]
-        y_current = h * ((sin(x) * sin(x)) + (y * (cos(x)/sin(x)))) + y
-        x_current = x + h
-        ys.append(y_current)
-        xs.append(x_current)
+
+        k1 = sin(x) * sin(x) + (y * (cos(x) / sin(x)))
+        delta_y = k1
+        x_next = x + h
+        y_next = y + delta_y
+
+        xs.append(x_next)
+        ys.append(y_next)
 
     plot(xs, ys)
 
@@ -30,5 +34,5 @@ def plot(xs, ys):
     plt.xlabel('Value of x')
     plt.ylabel('Value of y')
     plt.title("Approximate solution with Euler's Method")
-    plt.show()
     savefig('euler_method_solution.png')
+    plt.show()
