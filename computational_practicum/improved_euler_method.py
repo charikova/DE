@@ -17,10 +17,15 @@ def computations(x0, y0, x, n):
     for i in range(n):
         x = xs[-1]
         y = ys[-1]
-        y_current = h * ((sin(x) * sin(x)) + (y * (cos(x)/sin(x)))) + y
-        x_current = x + h
-        ys.append(y_current)
-        xs.append(x_current)
+
+        k1 = (sin(x) * sin(x) + (y * (cos(x) / sin(x)))) * h
+        k2 = (sin(x + (h / 2)) * sin(x + (h / 2)) + ((y + (k1 / 2)) * (cos(x + (h / 2)) / sin(x + h / 2)))) * h
+        delta_y = k2
+        x_next = x + h
+        y_next = y + delta_y
+
+        xs.append(x_next)
+        ys.append(y_next)
 
     plot(xs, ys)
 
