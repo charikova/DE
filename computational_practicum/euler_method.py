@@ -11,14 +11,13 @@ def computations(x0, y0, x, n):
     ys.append(y0)
 
     n = int(n)
-
     h = (x - x0) / n
 
     for i in range(n):
         x = xs[-1]
         y = ys[-1]
 
-        k1 = sin(x) * sin(x) + (y * (cos(x) / sin(x)))
+        k1 = function_for_computation(x, y)
         delta_y = k1
         x_next = x + h
         y_next = y + delta_y
@@ -27,6 +26,10 @@ def computations(x0, y0, x, n):
         ys.append(y_next)
 
     plot(xs, ys)
+
+
+def function_for_computation(x, y):
+    return sin(x) * sin(x) + (y * (cos(x) / sin(x)))
 
 
 def plot(xs, ys):
