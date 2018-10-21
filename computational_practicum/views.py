@@ -8,7 +8,6 @@ from computational_practicum import runge_kutta_method
 
 
 def solution(request):
-    parser(request)
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
@@ -24,8 +23,8 @@ def parser(request):
     y0 = ([q[0].y0])
     x = ([q[0].x])
     n = ([q[0].n])
-    Post.clean(Post)
-    euler_method.computations(x0[-1], y0[-1], x[-1], n[-1])
+    Post.objects.all().delete()
+    euler_method.computations(x0[0], y0[0], x[0], n[0])
     improved_euler_method.computations(x0[-1], y0[-1], x[-1], n[-1])
     runge_kutta_method.computations(x0[-1], y0[-1], x[-1], n[-1])
 
