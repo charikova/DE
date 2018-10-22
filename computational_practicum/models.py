@@ -12,3 +12,11 @@ class Post(models.Model):
 
     def __float__(self):
         return self.x0
+
+
+class Image(models.Model):
+    euler = models.ImageField(upload_to='Templates')
+    improved_euler = models.ImageField(upload_to='Templates')
+    runge_kutta = models.ImageField(upload_to='Templates')
+
+

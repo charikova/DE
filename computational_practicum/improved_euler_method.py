@@ -26,14 +26,14 @@ def computations(x0, y0, x, n):
         xs.append(x_next)
         ys.append(y_next)
 
-    plot(xs, ys)
+    graph_plot(xs, ys)
 
 
 def function_for_computation(x, y):
     return sin(x) * sin(x) + (y * (cos(x) / sin(x)))
 
 
-def plot(xs, ys):
+def graph_plot(xs, ys):
     plt.plot(xs, ys, 'o')
     plt.xlabel('Value of x')
     plt.ylabel('Value of y')

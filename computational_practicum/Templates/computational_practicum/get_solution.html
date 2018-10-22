@@ -5,6 +5,11 @@
     <title>Get solution</title>
 </head>
 <body>
+    {{ x0 }}
+    {{ y0 }}
+    {{ x }}
+    {{ n }}
+    {{ image }}
     <table>
         <tr>
             <td>Euler's Method</td>
@@ -12,9 +17,7 @@
             <td>Runge-Kutta Method</td>
         </tr>
         <tr>
-            <td><img src="../../../euler_method_solution.png"></td>
-            <td><img src="../../../improved_euler_method_solution.png"></td>
-            <td><img src="../../../runge_kutta_method_solution.png"></td>
+            <td><img src="data:image/png;base64, {{image}}"/></td>
         </tr>
     </table>
 </body>

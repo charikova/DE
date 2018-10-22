@@ -1,6 +1,13 @@
+import os
+
+import PIL
+from io import StringIO
 from math import *
-from matplotlib import pyplot as plt
-from matplotlib.pyplot import savefig
+
+import pylab
+from django.http import HttpResponse
+from matplotlib import pyplot as plt, pyplot
+from matplotlib.pyplot import savefig, xlabel, ylabel, title, grid
 
 
 def computations(x0, y0, x, n):
@@ -25,17 +32,18 @@ def computations(x0, y0, x, n):
         xs.append(x_next)
         ys.append(y_next)
 
-    plot(xs, ys)
+    graph_plot(xs, ys)
 
 
 def function_for_computation(x, y):
     return sin(x) * sin(x) + (y * (cos(x) / sin(x)))
 
 
-def plot(xs, ys):
+def graph_plot(xs, ys):
     plt.plot(xs, ys, 'o')
     plt.xlabel('Value of x')
     plt.ylabel('Value of y')
     plt.title("Approximate solution with Euler's Method")
-    savefig('euler_method_solution.png')
+    plt.savefig(os.getcwd()+"/computational_practicum/Templates/euler_method_solution.png")
     plt.show()
+
