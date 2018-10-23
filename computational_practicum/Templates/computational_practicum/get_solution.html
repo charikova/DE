@@ -9,6 +9,7 @@
 
     body {
         background-color: pink;
+        font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
     }
     table {
         width: 100%;
@@ -17,13 +18,18 @@
     img {
         width: 100%;
     }
+
+    h3 {
+        margin-left: 3%;
+    }
 </style>
 <body>
 <br>
-x0 = {{ x0 }} <br>
-y0 = {{ y0 }} <br>
-x = {{ x }} <br>
-n = {{ n }} <br>
+<h3>x0 = {{ x0 }}</h3>
+<h3>y0 = {{ y0 }}</h3>
+<h3>x = {{ x }}</h3>
+<h3>n = {{ n }}</h3>
+
 <table>
     <tr>
         <td><img src="data:image/png;base64, {{ image_em }}"/></td>

@@ -7,8 +7,64 @@
 </head>
 <style>
     body {
-    background-color: pink;
-}
+        background-color: pink;
+        font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    }
+
+    .button {
+        text-decoration: none;
+        text-align: center;
+        padding: 11px 32px;
+        border: solid 1px #e396e3;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        font: 18px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        color: #000000;
+        background: #e396e3;
+        -webkit-box-shadow: 0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;
+        -moz-box-shadow: 0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;
+        box-shadow: 0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;
+
+        -webkit-transition: background 0s ease;
+        -moz-transition: background 0s ease;
+        -o-transition: background 0s ease;
+        transition: background 0s ease;
+    }
+
+    .button:hover {
+        padding: 11px 32px;
+        border: solid 3px #6e2d6e;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        font: 18px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        color: #000000;
+        background: #e396e3;
+        -webkit-box-shadow: 0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;
+        -moz-box-shadow: 0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;
+        box-shadow: 0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;
+
+    }
+
+    .button:active {
+        padding: 11px 32px;
+        border: solid 1px #e396e3;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        font: 18px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        color: #000000;
+        background: #ad55ad;
+        -webkit-box-shadow: 0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;
+        -moz-box-shadow: 0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;
+        box-shadow: 0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;
+
+    }
+
 </style>
 <body>
 {% block content %}
@@ -25,12 +81,16 @@
     <center>
         <form method="POST" class="post-form">{% csrf_token %}
             {{ form.as_p }}
-            <button class="save btn btn-default">Submit</button>
+            <button class="save btn btn-default button">Submit</button>
         </form>
     </center>
     <br>
     <center>
-        <button class="save btn btn-default" onclick=location.href="{% url 'get_solution' %}">Get solution</button>
+        <button class="save btn btn-default button" onclick=location.href="{% url 'get_solution' %}">Get solution</button>
+    </center>
+    <br>
+    <center>
+        <button class="save btn btn-default button" onclick=location.href="{% url 'get_solution' %}">Get error analysis</button>
     </center>
 
 {% endblock %}

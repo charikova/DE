@@ -14,7 +14,7 @@ def computations(x0, y0, x, n):
     n = int(n)
     h = (x - x0) / n
 
-    for i in range(n):
+    for i in range(n - 1):
         x = xs[-1]
         y = ys[-1]
 
