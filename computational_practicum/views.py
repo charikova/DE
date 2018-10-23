@@ -31,18 +31,40 @@ def parser(request):
     x = q[0].x
     n = q[0].n
     Post.objects.all().delete()
-    base_image = get_image(request,x0,y0,x,n)
-    print(base_image)
-    return render(request, 'computational_practicum/get_solution.html', {'x0': x0, 'y0': y0, 'x': x, 'n': n,'image':base_image})
+    base_image_em = get_image_em(request, x0, y0, x, n)
+    base_image_iem = get_image_iem(request, x0, y0, x, n)
+    base_image_rkm = get_image_rkm(request, x0, y0, x, n)
+    return render(request, 'computational_practicum/get_solution.html', {'x0': x0, 'y0': y0, 'x': x, 'n': n,
+                                                                         'image_em': base_image_em,
+                                                                         'image_iem': base_image_iem,
+                                                                         'image_rkm': base_image_rkm})
 
 
-def get_image(request, x0, y0, x, n):
-    image_data_euler = euler_method.computations(x0, y0, x, n)
+def get_image_em(request, x0, y0, x, n):
+    euler_method.computations(x0, y0, x, n)
     with open(os.getcwd()+"/computational_practicum/Templates/euler_method_solution.png", 'rb') as img:
-        s = str(base64.b64encode(img.read()))
-    s = s[1:]
-    s=s.replace('\'','')
+        s_em = str(base64.b64encode(img.read()))
+    s_em = s_em[1:]
+    s_em = s_em.replace('\'','')
 
-    #image_data_improved_euler = improved_euler_method.computations(x0[0], y0[0], x[0], n[0])
-    #image_data_runge_kutta = runge_kutta_method.computations(x0[0], y0[0], x[0], n[0])
-    return s
+    return s_em
+
+
+def get_image_iem(request, x0, y0, x, n):
+    improved_euler_method.computations(x0, y0, x, n)
+    with open(os.getcwd() + "/computational_practicum/Templates/improved_euler_method_solution.png", 'rb') as img:
+        s_iem = str(base64.b64encode(img.read()))
+    s_iem = s_iem[1:]
+    s_iem = s_iem.replace('\'', '')
+
+    return s_iem
+
+
+def get_image_rkm(request, x0, y0, x, n):
+    runge_kutta_method.computations(x0, y0, x, n)
+    with open(os.getcwd() + "/computational_practicum/Templates/runge_kutta_method_solution.png", 'rb') as img:
+        s_rkm = str(base64.b64encode(img.read()))
+    s_rkm = s_rkm[1:]
+    s_rkm = s_rkm.replace('\'', '')
+
+    return s_rkm

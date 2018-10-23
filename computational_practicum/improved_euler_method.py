@@ -1,4 +1,5 @@
 from math import *
+import os
 from matplotlib import pyplot as plt
 from matplotlib.pyplot import savefig
 
@@ -34,8 +35,9 @@ def function_for_computation(x, y):
 
 
 def graph_plot(xs, ys):
-    plt.plot(xs, ys, 'o')
+    plt.plot(xs, ys, '.r-')
     plt.xlabel('Value of x')
     plt.ylabel('Value of y')
     plt.title("Approximate solution with Improved Euler's Method")
-    savefig('improved_euler_method_solution.png')
+    plt.savefig(os.getcwd()+"/computational_practicum/Templates/improved_euler_method_solution.png")
+    plt.show()

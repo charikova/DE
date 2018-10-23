@@ -1,13 +1,6 @@
 import os
-
-import PIL
-from io import StringIO
 from math import *
-
-import pylab
-from django.http import HttpResponse
-from matplotlib import pyplot as plt, pyplot
-from matplotlib.pyplot import savefig, xlabel, ylabel, title, grid
+from matplotlib import pyplot as plt
 
 
 def computations(x0, y0, x, n):
@@ -40,7 +33,7 @@ def function_for_computation(x, y):
 
 
 def graph_plot(xs, ys):
-    plt.plot(xs, ys, 'o')
+    plt.plot(xs, ys, '.r-')
     plt.xlabel('Value of x')
     plt.ylabel('Value of y')
     plt.title("Approximate solution with Euler's Method")

@@ -3,22 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Get solution</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<style>
+
+    body {
+        background-color: pink;
+    }
+    table {
+        width: 100%;
+    }
+
+    img {
+        width: 100%;
+    }
+</style>
 <body>
-    {{ x0 }}
-    {{ y0 }}
-    {{ x }}
-    {{ n }}
-    {{ image }}
-    <table>
-        <tr>
-            <td>Euler's Method</td>
-            <td>Improved Euler's Method</td>
-            <td>Runge-Kutta Method</td>
-        </tr>
-        <tr>
-            <td><img src="data:image/png;base64, {{image}}"/></td>
-        </tr>
-    </table>
+<br>
+x0 = {{ x0 }} <br>
+y0 = {{ y0 }} <br>
+x = {{ x }} <br>
+n = {{ n }} <br>
+<table>
+    <tr>
+        <td><img src="data:image/png;base64, {{ image_em }}"/></td>
+        <td><img src="data:image/png;base64, {{ image_iem }}"/></td>
+        <td><img src="data:image/png;base64, {{ image_rkm }}"/></td>
+    </tr>
+</table>
 </body>
 </html>
