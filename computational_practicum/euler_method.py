@@ -1,6 +1,5 @@
-import os
 from math import *
-from matplotlib import pyplot as plt
+from computational_practicum import graph_maker
 
 
 def computations(x0, y0, x, n):
@@ -24,19 +23,10 @@ def computations(x0, y0, x, n):
 
         xs.append(x_next)
         ys.append(y_next)
-
-    graph_plot(xs, ys)
+    return xs, ys
 
 
 def function_for_computation(x, y):
     return sin(x) * sin(x) + (y * (cos(x) / sin(x)))
 
-
-def graph_plot(xs, ys):
-    plt.plot(xs, ys, '.r-')
-    plt.xlabel('Value of x')
-    plt.ylabel('Value of y')
-    plt.title("Approximate solution with Euler's Method")
-    plt.savefig(os.getcwd()+"/computational_practicum/Templates/euler_method_solution.png")
-    plt.show()
 
