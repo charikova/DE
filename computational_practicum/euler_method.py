@@ -1,5 +1,4 @@
-from math import *
-from computational_practicum import graph_maker
+from computational_practicum import given_function
 
 
 def computations(x0, y0, x, n):
@@ -16,17 +15,12 @@ def computations(x0, y0, x, n):
         x = xs[-1]
         y = ys[-1]
 
-        k1 = function_for_computation(x, y)
-        delta_y = k1
         x_next = x + h
-        y_next = y + delta_y
+        f = given_function.function_for_computation(x, y)
+        y_next = y + h * f
 
         xs.append(x_next)
         ys.append(y_next)
     return xs, ys
-
-
-def function_for_computation(x, y):
-    return sin(x) * sin(x) + (y * (cos(x) / sin(x)))
 
 

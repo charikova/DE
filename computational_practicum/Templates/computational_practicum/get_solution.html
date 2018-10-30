@@ -17,7 +17,7 @@
     }
 
     img {
-        width: 40%;
+        width: 100%;
     }
 
     h3 {
@@ -81,13 +81,16 @@
 <body>
 <table>
     <tr>
-        <td><h3>x0 = {{ x0 }}</h3>
-            <h3>y0 = {{ y0 }}</h3>
-            <h3>x = {{ x }}</h3>
-            <h3>n = {{ n }}</h3></td>
+        <td>x0 = {{ x0 }}<br>
+            y0 = {{ y0 }}<br>
+            x = {{ x }}<br>
+            n = {{ n }}
+        </td>
+        <td>
+            <button class="save btn btn-default button" onclick=location.href="{% url 'error_analysis' %}">
+                Error Analysis</button>
+        </td>
     </tr>
-    <tr>
-        <td><button class="save btn btn-default button" onclick=location.href="{% url 'error_analysis' %}">Error Analysis</button></td>
     </tr>
 </table>
 <br>
@@ -95,7 +98,14 @@
 
 <table>
     <tr>
-        <td><img src="data:image/png;base64, {{ image_em }}"/></td>
+        <td><center>Exact solution (blue), approximate solutions using Euler Method (Orange),</center><br>
+            <center>Improved Euler Method (Blue), Runge-Kutta Method (Red)</center></td>
+        <td><center>Local errors: Euler Method (Blue),</center><br>
+            <center>Improved Euler Method (Green), Runge-Kutta Method (Orange)</center></td>
+    </tr>
+    <tr>
+        <td><img src="data:image/png;base64, {{ image }}"/></td>
+        <td><img src="data:image/png;base64, {{ image_error }}"/></td>
     </tr>
 </table>
 </body>

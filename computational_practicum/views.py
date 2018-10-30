@@ -3,7 +3,7 @@ import base64
 from django.shortcuts import render
 from .models import Post
 from .forms import PostForm
-from computational_practicum import euler_method, graph_maker
+from computational_practicum import graph_maker, error_analysis
 
 
 def solution(request):
@@ -16,24 +16,33 @@ def solution(request):
     return render(request, 'computational_practicum/solution.html', {'form': form})
 
 
-def parser(request):
+def get_image(request):
     q = Post.objects.all()
     x0 = q[0].x0
     y0 = q[0].y0
     x = q[0].x
     n = q[0].n
-    Post.objects.all().delete()
-    base_image_em = get_image_em(request, x0, y0, x, n)
-    return render(request, 'computational_practicum/get_solution.html', {'x0': x0, 'y0': y0, 'x': x, 'n': n,
-                                                                         'image_em': base_image_em})
 
-
-def get_image_em(request, x0, y0, x, n):
     graph_maker.graph(x0, y0, x, n)
 
-    with open(os.getcwd()+"/computational_practicum/Templates/solution.png", 'rb') as img:
-        s_em = str(base64.b64encode(img.read()))
-    s_em = s_em[1:]
-    s_em = s_em.replace('\'','')
+    with open(os.getcwd() + "/computational_practicum/Templates/solution.png", 'rb') as img:
+        s = str(base64.b64encode(img.read()))
+    s = s[1:]
+    s = s.replace('\'', '')
 
-    return s_em
+    with open(os.getcwd() + "/computational_practicum/Templates/solution_error.png", 'rb') as img:
+        s_e = str(base64.b64encode(img.read()))
+    s_e = s_e[1:]
+    s_e = s_e.replace('\'', '')
+
+    error_analysis.analysis(request)
+
+    return render(request, 'computational_practicum/get_solution.html', {'x0': x0, 'y0': y0, 'x': x, 'n': n,
+                                                                         'image': s,
+                                                                         'image_error': s_e,
+                                                                         })
+
+
+def clean_db(request):
+    Post.objects.all().delete()
+    return render(request, 'computational_practicum/solution.html')

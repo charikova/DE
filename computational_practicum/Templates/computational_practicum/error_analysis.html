@@ -77,17 +77,24 @@
 
 </style>
 <body>
-<br>
-<h3>x0 = {{ x0 }}</h3>
-<h3>y0 = {{ y0 }}</h3>
-<h3>x = {{ x }}</h3>
-<h3>n = {{ n }}</h3>
+<table>
+    <tr>
+        <td>x0 = {{ x0 }}<br>
+            y0 = {{ y0 }}<br>
+            x = {{ x }}<br>
+            n = {{ n }}
+        </td>
+        <td>
+            <button class="save btn btn-default button" onclick=location.href="{% url 'solution' %}">
+                OK, thanks!</button>
+        </td>
+    </tr>
+    </tr>
+</table>
 
 <table>
     <tr>
-        <td><img src="data:image/png;base64, {{ image_em }}"/></td>
-        <td><img src="data:image/png;base64, {{ image_iem }}"/></td>
-        <td><img src="data:image/png;base64, {{ image_rkm }}"/></td>
+        <td><img src="data:image/png;base64, {{ image_error_analysis }}"/></td>
     </tr>
 </table>
 </body>
