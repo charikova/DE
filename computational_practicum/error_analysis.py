@@ -10,10 +10,10 @@ from computational_practicum.models import Post
 
 def analysis(request):
     q = Post.objects.all()
-    x0 = q[0].x0
-    y0 = q[0].y0
-    x = q[0].x
-    n = q[0].n
+    x0 = q[len(Post.objects.all()) - 1].x0
+    y0 = q[len(Post.objects.all()) - 1].y0
+    x = q[len(Post.objects.all()) - 1].x
+    n = q[len(Post.objects.all()) - 1].n
 
     max_error_euler = []
     max_error_improved_euler = []

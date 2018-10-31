@@ -8,9 +8,9 @@ from computational_practicum import graph_maker, error_analysis
 
 def solution(request):
     if request.method == "POST":
-        form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save()
+            form = PostForm(request.POST)
+            if form.is_valid():
+                post = form.save()
     else:
         form = PostForm()
     return render(request, 'computational_practicum/solution.html', {'form': form})
@@ -18,10 +18,10 @@ def solution(request):
 
 def get_image(request):
     q = Post.objects.all()
-    x0 = q[0].x0
-    y0 = q[0].y0
-    x = q[0].x
-    n = q[0].n
+    x0 = q[len(Post.objects.all()) - 1].x0
+    y0 = q[len(Post.objects.all()) - 1].y0
+    x = q[len(Post.objects.all()) - 1].x
+    n = q[len(Post.objects.all()) - 1].n
 
     graph_maker.graph(x0, y0, x, n)
 
@@ -45,4 +45,3 @@ def get_image(request):
 
 def clean_db(request):
     Post.objects.all().delete()
-    return render(request, 'computational_practicum/solution.html')
