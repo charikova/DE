@@ -1,5 +1,4 @@
-from math import *
-from computational_practicum import graph_maker, given_function
+from computational_practicum import given_function
 
 
 def computations(x0, y0, x, n):

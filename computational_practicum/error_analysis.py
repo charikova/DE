@@ -1,10 +1,8 @@
 import base64
-
 from computational_practicum import euler_method, improved_euler_method, runge_kutta_method, exact_solution
 from matplotlib import pyplot as plt
 import os
 from django.shortcuts import render
-
 from computational_practicum.models import Post
 
 
